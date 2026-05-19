@@ -3,10 +3,36 @@
 // html title보다 우선순위가 높다.
 // document.title = "Hello! From JS";
 
-const title = document.getElementById("title");
+// const title = document.getElementById("something");
 // console.dir(title);
 
-title.innerText = "Got you!";
+// title.innerText = "Got you!";
 
-console.log(title.id);
-console.log(title.className);
+// console.log(title.id);
+// console.log(title.className);
+
+// const hellos = document.getElementsByClassName("hello");
+// console.log(hellos);
+
+// const title = document.getElementsByTagName("h1");
+// querySelector는 element를 css방식으로 검색할 수 있다.
+// .hello h1은 class내부에 있는 h1을 하나만 가지고 올수 있다.
+// const title = document.querySelector(".hello h1");
+// const title = document.querySelector(".hello h1:first-child");
+
+// id로 찾기(둘다 똑같음..)
+// const title = document.getElementById("hello");
+// form태그가 있으면 form태그로 찾기
+// const title = document.querySelector("#hello form");
+const title = document.querySelector(".hello h1");
+
+title.innerText = "changed!";
+// querySelectorAll - .hello h1은 class내부에 있는 h1을 하나만 가지고 올수 있다.
+// const title = document.querySelectorAll(".hello h1");
+
+
+
+// div h1은 div내부에 있는 h1을 가지고 올수 있다.
+// const title = document.querySelector("div h1");
+// getElementsByClassName("hello");
+console.log(title);
