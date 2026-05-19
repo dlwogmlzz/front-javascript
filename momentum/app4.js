@@ -20,6 +20,14 @@
 // const title = document.querySelector(".hello h1");
 // const title = document.querySelector(".hello h1:first-child");
 
+// .hello h1의 자식인 h1을 가지고 올수 있다. 하지만 .hello h1:first-child h1은 .hello h1의 첫번째 자식인 h1이 없기 때문에 null이 된다.
+// const title = document.querySelector(".hello h1:first-child h1");
+// const title = document.querySelector("div.hello h1:first-child h1");
+
+// element의 내부를 보고 싶다면, console.dir()을 사용하면 된다.
+// console.dir(title);
+
+
 // id로 찾기(둘다 똑같음..)
 // const title = document.getElementById("hello");
 // form태그가 있으면 form태그로 찾기
