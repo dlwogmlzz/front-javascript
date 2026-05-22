@@ -1,6 +1,7 @@
 const clock = document.querySelector("h2#clock");
 
 function getClock() {
+    // Date오브젝트 생성.
     const date = new Date();
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
