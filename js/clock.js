@@ -1,8 +1,15 @@
 const clock = document.querySelector("h2#clock");
 
-function sayHello() {
-    console.log("hello");
+function getClock() {
+    const date = new Date();
+    clock.innerText = (`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
 }
 
-// setInterval - 매번(5초후) 무슨 일이 일어나게 하고 싶을때 사용.
-setInterval(sayHello, 5000);
+// setTimeout - 한번 띄움
+// setTimeout(sayHello, 5000);
+
+// setInterval - 매번(1초후) 무슨 일이 일어나게 하고 싶을때 사용.(계속 띄움.)
+// website가 load되자마자 getClock()을 실행하고 또 매초마다 다시 실행되도록...
+getClock();
+setInterval(getClock, 1000);
+
