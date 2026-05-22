@@ -2,6 +2,7 @@ const clock = document.querySelector("h2#clock");
 
 function getClock() {
     // Date오브젝트 생성.
+    // Date object는 호출하는 당시의 날짜와 시간을 알려준다.
     const date = new Date();
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
