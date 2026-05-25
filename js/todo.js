@@ -8,6 +8,17 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.getElementById("todo-list");
 
+const toDos = [];
+
+// localStorage로 배열로 받아오는 todos를 저장...
+function saveToDos() {
+    // localStorage.setItem("todos", toDos);
+
+    // JSON.stringify()는 js의 object나 array나 어떤 것이든 string으로 바꿔주는 기능..
+    localStorage.setItem("todos", JSON.stringify(toDos));
+
+}
+
 // todoList삭제 함수..
 function deleteToDo(yap_event) {
     // 옛날과 다르게 콘솔에서 path를 찾아볼수가 없음..
@@ -63,8 +74,12 @@ function handleToDoSubmit(yap_event) {
     toDoInput.value = "";
     // console.log(newTodo, toDoInput.value);
 
+    // newTodo가 만들어질때 마다 그 텍스트를 array(toDos)에 push하기.
+    toDos.push(newTodo);
     // paintTodo 함수를 호출하고, newTodo인자값을 넘김.
     paintToDo(newTodo);
+    saveToDos();
+    
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
