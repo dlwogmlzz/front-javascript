@@ -7,6 +7,7 @@ const toDoForm = document.getElementById("todo-form");
 // const toDoInput = toDoForm.querySelector("input");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.getElementById("todo-list");
+const TODOS_KEY = "todos";
 
 const toDos = [];
 
@@ -15,7 +16,9 @@ function saveToDos() {
     // localStorage.setItem("todos", toDos);
 
     // JSON.stringify()는 js의 object나 array나 어떤 것이든 string으로 바꿔주는 기능..
-    localStorage.setItem("todos", JSON.stringify(toDos));
+    localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+
+    // 위의 JSON.stringify로 만든 string을 다시 JSON.parse로 배열로 만들 수 있다.
 
 }
 
@@ -83,3 +86,20 @@ function handleToDoSubmit(yap_event) {
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
+// function sayHello(item) {
+//     console.log("this is the turn of", item);
+// }
+
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if (savedToDos !== null) { // savedToDos가 true인 경우라서 그냥 savedToDos만 써도 됨.
+    // savedToDos가 localStorage에 존재하면.
+    const parsedToDos = JSON.parse(savedToDos);
+    // console.log(parsedToDos);
+
+    // parsedToDos가 가지고 있는 각각의 item에 대해 sayHello를 실행해서 몇번을 동작시켰는지 확인..
+    // parsedToDos.forEach(sayHello);
+
+    parsedToDos.forEach((item) => console.log("this is the turn of", item));
+}
