@@ -9,7 +9,10 @@ const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.getElementById("todo-list");
 const TODOS_KEY = "todos";
 
-const toDos = [];
+// const toDos = []; // const로 할경우 새로운 값을 추가하면, 기존 값들이 화면을 갱신할때 지워지는 문제가 있음..
+
+// toDos를 let으로 바꿔서 업데이트가 가능하게 만듦.
+let toDos = []; // 하지만 삭제를 했을때, 값이 그대로 저장되있음..
 
 // localStorage로 배열로 받아오는 todos를 저장...
 function saveToDos() {
@@ -101,5 +104,10 @@ if (savedToDos !== null) { // savedToDos가 true인 경우라서 그냥 savedToD
     // parsedToDos가 가지고 있는 각각의 item에 대해 sayHello를 실행해서 몇번을 동작시켰는지 확인..
     // parsedToDos.forEach(sayHello);
 
-    parsedToDos.forEach((item) => console.log("this is the turn of", item));
+    // 콘솔로그로 값확인..
+    // parsedToDos.forEach((item) => console.log("this is the turn of", item));
+
+    toDos = parsedToDos;
+    // 화면에 값 출력시키기
+    parsedToDos.forEach(paintToDo);
 }
