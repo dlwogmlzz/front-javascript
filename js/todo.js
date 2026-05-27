@@ -40,7 +40,13 @@ function deleteToDo(yap_event) {
 
     // delete Todo..
     const li = event.target.parentElement;
+    // console.log(li.id);
+    console.log(typeof li.id);
     li.remove();
+
+    // toDo.id는 String이고 li.id는 int하서 삭제가 안되기때문에 li.id를 String으로 parseInt해줘야 함.
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+    saveToDos();
 }
 
 // todo를 만드는 작업 함수..
@@ -48,8 +54,9 @@ function paintToDo(newTodo) { // newTodo인자 넣음.
     // console.log("I will paint", newTodo);
     // 1. li/span을 만들고, span의 텍스트를 변경.
     const li = document.createElement("li");
+    li.id = newTodo.id;
     const span = document.createElement("span");
-    span.innerText = newTodo;
+    span.innerText = newTodo.text;
 
     // 여기서 문제점..
     // list에 item들을 추가할 수는 있지만, 지울 수는 없다는 것과 페이지를 새로고침하면, todoList들이 사라진다는것...
@@ -81,9 +88,19 @@ function handleToDoSubmit(yap_event) {
     // console.log(newTodo, toDoInput.value);
 
     // newTodo가 만들어질때 마다 그 텍스트를 array(toDos)에 push하기.
-    toDos.push(newTodo);
+    // toDos.push(newTodo);
+
+    // 위 처럼 텍스트를 push하지 말고, object를 push 할수 있도록 리팩토링..
+    const newTodoObj = {
+        text: newTodo,
+        id: Date.now(),
+    };
+
+    toDos.push(newTodoObj);
+
     // paintTodo 함수를 호출하고, newTodo인자값을 넘김.
-    paintToDo(newTodo);
+    // paintToDo(newTodo);
+    paintToDo(newTodoObj);
     saveToDos();
     
 }
@@ -109,5 +126,6 @@ if (savedToDos !== null) { // savedToDos가 true인 경우라서 그냥 savedToD
 
     toDos = parsedToDos;
     // 화면에 값 출력시키기
+    // paintToDo를 parsedToDos 배열의 요소마다 실행함.
     parsedToDos.forEach(paintToDo);
 }
