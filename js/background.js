@@ -10,6 +10,6 @@ const bgImage = document.createElement("img");
 bgImage.src = `img/${chosenImage}`;
 console.log(bgImage);
 // appendChild/append가 가장 뒤에
-// document.body.appendChild(bgImage);
+document.body.appendChild(bgImage);
 // prepend가 가장 앞에
-document.body.prepend(bgImage);
+// document.body.prepend(bgImage);
