@@ -9,7 +9,7 @@ const bgImage = document.createElement("img");
 // <img src="img/~~.jpg"/> 이거랑 같음...
 bgImage.src = `img/${chosenImage}`;
 console.log(bgImage);
-// append가 가장 뒤에
-document.body.appendChild(bgImage);
+// appendChild/append가 가장 뒤에
+// document.body.appendChild(bgImage);
 // prepend가 가장 앞에
-// document.body.prependChild(bgImage);
+document.body.prepend(bgImage);
