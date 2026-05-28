@@ -81,6 +81,7 @@ body::after {
 /* 5. 시계 (#clock)와 인사말 (#greeting) 디자인 및 정중앙 배치 */
 #clock {
     position: absolute;
+    font-family: monospace;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -88,7 +89,8 @@ body::after {
     font-weight: 500;
     letter-spacing: -3px;
     line-height: 1;
-    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 4px 4px 5px rgb(0, 0, 0);
+
 }
 
 #greeting {
@@ -98,6 +100,7 @@ body::after {
     transform: translate(-50%, -50%);
     font-size: 3.5rem;
     font-weight: 500;
+    font-family: cursive;
     width: 100%;
     text-align: center;
     text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
