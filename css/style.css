@@ -1,3 +1,216 @@
+/* 1. 기본 초기화 및 전체 화면 설정 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
+    font-family: 'CookieRun', sans-serif;
+    color: white; /* 모든 텍스트 기본 색상을 흰색으로 */
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #333; /* 이미지 로딩 전 기본 배경색 */
+}
+
+/* 2. 배경 이미지 레이어 스타일링 (js/background.js에서 생성한 img 태그를 화면에 꽉 채움) */
+body > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 비율 유지하며 꽉 차게 */
+    z-index: -2; /* 모든 글자보다 뒤로 보냄 */
+}
+
+/* 3. 글씨가 잘 보이도록 배경을 살짝 어둡게 만들어주는 가상 필터 */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); /* 검은색 25% 투명도 덮기 */
+    z-index: -1;
+}
+
+/* 4. 로그인 폼 및 중앙 정렬 레이아웃 */
+#login-form, #todo-form {
+    text-align: center;
+}
+
+/* 로그인 입력창 스타일 */
+#login-form input[type="text"] {
+    color: white;
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    font-size: 2rem;
+    padding: 10px;
+    text-align: center;
+    outline: none;
+}
+
+#login-form input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.18);;
+}
+
+#login-form input[type="submit"] {
+    background-color: rgba(255, 255, 255, 0.18); /* 반투명한 유리 느낌의 배경 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px; /* 동글동글한 알약 모양 버튼 */
+    color: whitesmoke;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+/* 6. 버튼에 마우스를 올렸을 때(Hover) 효과 */
+#login-form input[type="submit"]:hover {
+    background-color: white;
+    color: #333; /* 배경이 흰색이 되니까 글자는 어둡게 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 5. 시계 (#clock)와 인사말 (#greeting) 디자인 및 정중앙 배치 */
+#clock {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8.5rem;
+    font-weight: 500;
+    letter-spacing: -3px;
+    line-height: 1;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#greeting {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 6. 투두리스트 입력창 (#todo-form) 위치 정렬 */
+#todo-form {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 500px;
+}
+
+#todo-form input {
+    background: none;
+    border: none;
+    border-bottom: 3px solid white; /* 밑줄 스타일 적용 */
+    color: white;
+    font-size: 1.6rem;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+
+#todo-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* 7. 투두 리스트 목록 (#todo-list) 스타일링 */
+#todo-list {
+    position: absolute;
+    top: 73%;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style: none;
+    font-size: 1.2rem;
+    text-align: center;
+    max-height: 150px;
+    overflow-y: auto; /* 리스트가 많아지면 스크롤 */
+    width: 100%;
+    max-width: 400px;
+}
+
+#todo-list li {
+    background-color: rgba(0, 0, 0, 0.3); /* 개별 할 일 배경을 약간 투명하게 */
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#todo-list li button {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* 8. 우상단 날씨 (#weather) 배치 */
+#weather {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    text-align: right;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+#weather span {
+    display: block; /* 두 줄로 나오도록 바꿈 */
+}
+
+#weather span:first-child {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* 9. 하단 정중앙 명언 (#quote) 배치 */
+#quote {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 85%;
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+#quote span {
+    display: block;
+}
+
+#quote span:first-child {
+    font-size: 1.05rem;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+#quote span:last-child {
+    font-size: 0.85rem;
+}
+
+/* 기존 작성하셨던 상태 유지 */
 .hidden {
-    display: none;
+    display: none !important;
 }

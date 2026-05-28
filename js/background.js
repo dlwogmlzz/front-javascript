@@ -1,4 +1,4 @@
-const images = ["dawangam.jpeg", "Magdalena.jpeg", "Pragser.jpeg", "tagimahal.jpeg", "santorini.jpeg"];
+const images = ["dawangam.jpeg", "Magdalena.jpeg", "santorini.jpeg", "chiquetere.jpeg", "Railaybeach.png"];
 
 const chosenImage = images[Math.floor(Math.random() * images.length)];
 // console.log(chosenImage);
