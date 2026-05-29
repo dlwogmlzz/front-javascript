@@ -41,7 +41,7 @@ function deleteToDo(yap_event) {
     // delete Todo..
     const li = event.target.parentElement;
     // console.log(li.id);
-    console.log(typeof li.id);
+    // console.log(typeof li.id);
     li.remove();
 
     // toDo.id는 String이고 li.id는 int하서 삭제가 안되기때문에 li.id를 String으로 parseInt해줘야 함.

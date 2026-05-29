@@ -14,16 +14,18 @@ function onGeoOk(position) {
     // Javascript에서 URL을 부르는 방법.
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
     // console.log(url);
+    
     // 웹 서버와 비동기적으로 데이터를 주고받기(네트워크 요청)
     // fetch(url); // ※비동기: promise(당장 뭔가 일어나지 않고 시간이 걸린뒤에 일어나는 것.)로 서버의 응답을 기다리지 않고 다음 코드를 먼저 실행하므로 웹 페이지가 멈추지 않음.
-    fetch(url)
+    fetch(url)  // url데이터를 호출!
+    // response => response.json - 서버에서 응답이 오면, response.json으로 응답이 온 데이터를 객체/배열 형태로 변환해줌.
         .then(response => response.json())
-        .then(data => {
+        .then(data => { // 그 후 변환이 완료된 데이터가 data변수에 담김.
             // console.log(data.name, data.weather[0].main);   // 현재 날씨만 추출.
             const weather = document.querySelector("#weather span:first-child");
             const city = document.querySelector("#weather span:last-child");
             city.innerText = data.name;
-            weather.innerText = `${data.weather[0].main} / ${data.main.temp}°C`;
+            weather.innerText = `${data.weather[0].main} / ${Math.floor(data.main.temp)}°C`;
         });
 }
 

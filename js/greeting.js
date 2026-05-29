@@ -14,7 +14,7 @@ function onLoginSubmit(yap_event) {
 
 function paintGreetings(username) { // 인자를 넣어도 문제없음..
     // const username = localStorage.getItem(USERNAME_KEY);
-    greeting.innerText = `Welcome ${username}!!`;
+    greeting.innerText = `Hello ${username}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
