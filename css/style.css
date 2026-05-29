@@ -55,7 +55,7 @@ body::after {
 }
 
 #login-form input[type="text"]::placeholder {
-    color: rgba(255, 255, 255, 0.18);;
+    color: rgba(255, 255, 255, 0.18);
 }
 
 #login-form input[type="submit"] {
