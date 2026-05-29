@@ -24,8 +24,8 @@ function onGeoOk(position) {
             // console.log(data.name, data.weather[0].main);   // 현재 날씨만 추출.
             const weather = document.querySelector("#weather span:first-child");
             const city = document.querySelector("#weather span:last-child");
-            city.innerText = data.name;
             weather.innerText = `${data.weather[0].main} / ${Math.floor(data.main.temp)}°C`;
+            city.innerText = data.name;
         });
 }
 
